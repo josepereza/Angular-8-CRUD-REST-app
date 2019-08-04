@@ -11,6 +11,11 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+    "plugins": [
+      {
+        "name": "@angular/language-service"
+      }
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],

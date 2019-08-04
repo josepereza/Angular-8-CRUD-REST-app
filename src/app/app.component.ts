@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular8-crud-dnd-char-stats';
+  title = 'Angular 8 : DnD Stat Tracker';
 }
