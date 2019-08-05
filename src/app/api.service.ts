@@ -51,12 +51,23 @@ export class ApiService {
       );
   }
 
-  addCharacter (character) : Observable<Character> {
+  addCharacter(character): Observable<Character> {
     return this.http.post<Character>(apiUrl, character, httpOptions)
-    .pipe(
-      tap((character: Character) => console.log(`added character with id=${character.id}`)),
-      catchError(this.handleError<Character>('addCharacter'))
-    );
+      .pipe(
+        tap((character: Character) =>
+          console.log(`added character with id=${character.id}`)),
+        catchError(this.handleError<Character>('addCharacter'))
+      );
+  }
+
+  updateCharacter(id, character): Observable<any> {
+    const url = `${apiUrl}/${id}`;
+
+    return this.http.put(url, character, httpOptions)
+      .pipe(
+        tap(_ => console.log(`updated character id=${id}`)),
+        catchError(this.handleError<any>('updateCharacter'))
+      );
   }
 
 
