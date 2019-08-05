@@ -70,5 +70,15 @@ export class ApiService {
       );
   }
 
+  deleteCharacter(id): Observable<Character> {
+    const url = `${apiUrl}/${id}`;
+
+    return this.http.delete<Character>(url, httpOptions)
+      .pipe(
+        tap(_ => console.log(`deleted character id=${id}`)),
+        catchError(this.handleError<Character>('deleteCharacter'))
+      );
+  }
+
 
 }
