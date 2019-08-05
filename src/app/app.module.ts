@@ -8,6 +8,9 @@ import { CharacterDetailComponent } from './character-detail/character-detail.co
 import { CharacterAddComponent } from './character-add/character-add.component';
 import { CharacterEditComponent } from './character-edit/character-edit.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';  
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,9 @@ import { CharacterEditComponent } from './character-edit/character-edit.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
