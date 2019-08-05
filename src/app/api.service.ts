@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Character } from './character';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const apiUrl = "/api/v1/characters";
 
@@ -19,7 +19,7 @@ export class ApiService {
     private http: HttpClient
   ) { }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: pass the error to logging infrastructure
@@ -33,12 +33,22 @@ export class ApiService {
 
   // CRUD Stuff
 
-  getCharacters (): Observable<Character[]> {
+  getCharacters(): Observable<Character[]> {
     return this.http.get<Character[]>(apiUrl)
-    .pipe(
-      tap(heroes => console.log('fetched Characters from API')),
-      catchError(this.handleError('getCharacters', []))
-    );
+      .pipe(
+        tap(heroes => console.log('fetched Characters from API')),
+        catchError(this.handleError('getCharacters', []))
+      );
+  }
+
+  getCharacter(id: number): Observable<Character> {
+    const url = `${apiUrl}/${id}`;
+
+    return this.http.get<Character>(url)
+      .pipe(
+        tap(_ => console.log(`fetched character id=${id}`)),
+        catchError(this.handleError<Character>(`getCharacter id=${id}`))
+      );
   }
 
 
