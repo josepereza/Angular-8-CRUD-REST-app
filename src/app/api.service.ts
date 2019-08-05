@@ -31,5 +31,15 @@ export class ApiService {
     };
   }
 
+  // CRUD Stuff
+
+  getCharacters (): Observable<Character[]> {
+    return this.http.get<Character[]>(apiUrl)
+    .pipe(
+      tap(heroes => console.log('fetched Characters from API')),
+      catchError(this.handleError('getCharacters', []))
+    );
+  }
+
 
 }
