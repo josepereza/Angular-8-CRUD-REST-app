@@ -51,5 +51,13 @@ export class ApiService {
       );
   }
 
+  addCharacter (character) : Observable<Character> {
+    return this.http.post<Character>(apiUrl, character, httpOptions)
+    .pipe(
+      tap((character: Character) => console.log(`added character with id=${character.id}`)),
+      catchError(this.handleError<Character>('addCharacter'))
+    );
+  }
+
 
 }
