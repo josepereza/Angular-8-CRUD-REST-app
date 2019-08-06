@@ -1,1 +1,46 @@
-<p>character-add works!</p>
+<div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <div class="button-row">
+        <a mat-flat-button color="primary" [routerLink]="['/characters']">
+            <mat-icon>list</mat-icon>
+        </a>
+    </div>
+    <mat-card class="example-card">
+        <form [formGroup]="characterForm" (ngSubmit)="onFormSubmit(characterForm.value)">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Character Name" formControlName="character_name"
+                    [errorStateMatcher]="validate">
+                <mat-error>
+                    <span
+                        *ngIf="!characterForm.get('character_name').valid && characterForm.get('character_name').touched">Please
+                        enter Character Name</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Character Desc" formControlName="character_description"
+                    [errorStateMatcher]="validate">
+                <mat-error>
+                    <span
+                        *ngIf="!characterForm.get('character_description').valid && characterForm.get('character_description').touched">Please
+                        enter Character Description</span>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Character Level" formControlName="character_level"
+                    [errorStateMatcher]="validate">
+                <mat-error>
+                    <span
+                        *ngIf="!characterForm.get('character_level').valid && characterForm.get('character_level').touched">Please
+                        enter Character Level</span>
+                </mat-error>
+            </mat-form-field>
+            <div class="button-row">
+                <button type="submit" [disabled]="!characterForm.valid" mat-flat-button color="primary">
+                    <mat-icon>save</mat-icon>
+                </button>
+            </div>
+        </form>
+    </mat-card>
+</div>
