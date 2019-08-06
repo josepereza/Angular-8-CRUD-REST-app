@@ -28,7 +28,7 @@ export class CharactersComponent implements OnInit {
         err => {
           console.log(err);
           this.isLoadingResults = false;
-      });
+        });
   }
 
 }
