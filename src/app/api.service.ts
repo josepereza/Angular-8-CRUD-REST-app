@@ -22,11 +22,8 @@ export class ApiService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: pass the error to logging infrastructure
-
       console.error(error);
 
-      // App continues running by returning empty.
       return of(result as T);
     };
   }

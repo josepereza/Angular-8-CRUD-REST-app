@@ -1,4 +1,4 @@
-/* Structure */
+
 .example-container {
     position: relative;
     padding: 5px;
@@ -33,7 +33,6 @@
     text-align: center;
   }
   
-  /* Column Widths */
   .mat-column-number,
   .mat-column-state {
     max-width: 64px;
