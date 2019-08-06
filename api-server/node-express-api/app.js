@@ -15,7 +15,7 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/character')
+mongoose.connect('mongodb://localhost/character', { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB via Mongoose!'))
   .catch((err) => console.error(err));
 
@@ -36,7 +36,7 @@ app.use(bodyParser.json);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/characters', characters);
-app.use('/character', characters);
+// app.use('/character', characters);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
