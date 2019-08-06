@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var characters = require('./routes/characters');
 
 var app = express();
+var cors = require('cors');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -26,6 +28,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
