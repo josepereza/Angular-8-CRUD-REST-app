@@ -19,6 +19,14 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+// POST character
+router.post('/', function (req, res, next) {
+    Character.create(req.body, function (err, post) {
+        if (err) return next(err);
+        res.json(post);
+    });
+});
+
 // PUT/Update character
 router.put('/:id', function (req, res, next) {
     Character.findByIdAndUpdate(req.params.id, req.body,
