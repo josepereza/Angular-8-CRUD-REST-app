@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material';
 
 @Component({
   selector: 'app-character-add',
@@ -14,8 +14,8 @@ export class CharacterAddComponent implements OnInit {
   characterForm: FormGroup;
   character_name: string = '';
   character_description: string = '';
-  character_level = null;
-  updated_at: Date = null;
+  // character_level = null;
+  // updated_at: Date = null;
   isLoadingResults = false;
 
   constructor(
@@ -28,8 +28,8 @@ export class CharacterAddComponent implements OnInit {
     this.characterForm = this.formBuilder.group({
       'character_name': [null, Validators.required],
       'character_description': [null, Validators.required],
-      'character_level': [null, Validators.required],
-      'updated_at': [null, Validators.required]
+      // 'character_level': [null, Validators.required],
+      // 'updated_at': [null, Validators.required]
     });
   }
 

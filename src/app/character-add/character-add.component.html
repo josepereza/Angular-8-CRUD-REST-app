@@ -7,8 +7,10 @@
             <mat-icon>list</mat-icon>
         </a>
     </div>
+
     <mat-card class="example-card">
         <form [formGroup]="characterForm" (ngSubmit)="onFormSubmit(characterForm.value)">
+
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="Character Name" formControlName="character_name"
                     [errorStateMatcher]="validate">
@@ -18,6 +20,7 @@
                         enter Character Name</span>
                 </mat-error>
             </mat-form-field>
+
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="Character Desc" formControlName="character_description"
                     [errorStateMatcher]="validate">
@@ -27,7 +30,8 @@
                         enter Character Description</span>
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="example-full-width">
+
+            <!-- <mat-form-field class="example-full-width">
                 <input matInput placeholder="Character Level" formControlName="character_level"
                     [errorStateMatcher]="validate">
                 <mat-error>
@@ -35,7 +39,8 @@
                         *ngIf="!characterForm.get('character_level').valid && characterForm.get('character_level').touched">Please
                         enter Character Level</span>
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field> -->
+
             <div class="button-row">
                 <button type="submit" [disabled]="!characterForm.valid" mat-flat-button color="primary">
                     <mat-icon>save</mat-icon>
