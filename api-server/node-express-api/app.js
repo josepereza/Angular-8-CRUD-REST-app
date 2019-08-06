@@ -6,8 +6,16 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var characters = require('./routes/characters');
 
 var app = express();
+var mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://localhost/character')
+  .then(() => console.log('Connected to MongoDB via Mongoose!'))
+  .catch((err) => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/characters', characters);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
