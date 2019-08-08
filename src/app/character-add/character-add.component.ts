@@ -37,7 +37,7 @@ export class CharacterAddComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.addCharacter(form)
       .subscribe(res => {
-        let id = res['id'];
+        let id = res['_id'];
         this.isLoadingResults = false;
         this.router.navigate(['/character-details', id]);
       }, (err) => {

@@ -12,7 +12,7 @@ import { ErrorStateMatcher } from '@angular/material';
 export class CharacterEditComponent implements OnInit {
 
   characterForm: FormGroup;
-  id: number = null;
+  _id: string = '';
   character_name: string = '';
   character_description: string = '';
   // character_level = null;
@@ -39,7 +39,7 @@ export class CharacterEditComponent implements OnInit {
   getCharacter(id) {
     this.api.getCharacter(id)
       .subscribe(data => {
-        this.id = data.id;
+        this._id = data._id;
         this.characterForm.setValue({
           character_name: data.character_name,
           character_description: data.character_description
@@ -49,9 +49,9 @@ export class CharacterEditComponent implements OnInit {
 
   onFormSubmit(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.updateCharacter(this.id, form)
+    this.api.updateCharacter(this._id, form)
       .subscribe(res => {
-        let id = res['id'];
+        let id = res['_id'];
         this.isLoadingResults = false;
         this.router.navigate(['/character-details', id]);
       }, (err) => {
@@ -61,7 +61,7 @@ export class CharacterEditComponent implements OnInit {
   }
 
   characterDetails() {
-    this.router.navigate(['character-details', this.id]);
+    this.router.navigate(['character-details', this._id]);
   }
 
   validate: ErrorStateMatcher = {

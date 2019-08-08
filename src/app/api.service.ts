@@ -52,7 +52,7 @@ export class ApiService {
     return this.http.post<Character>(apiUrl, character, httpOptions)
       .pipe(
         tap((character: Character) =>
-          console.log(`added character with id=${character.id}`)),
+          console.log(`added character with id=${character._id}`)),
         catchError(this.handleError<Character>('addCharacter'))
       );
   }

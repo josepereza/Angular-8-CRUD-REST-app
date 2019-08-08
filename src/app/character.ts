@@ -1,5 +1,5 @@
 export class Character {
-    id : number;
+    _id : string; // Underscore and String used by MongoDB
     character_name: string;
     character_description: string;
     character_level: number;
