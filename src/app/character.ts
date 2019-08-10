@@ -3,5 +3,5 @@ export class Character {
     character_name: string;
     character_description: string;
     character_level: number;
-    update_at: Date;
+    updated_at: Date;
 }

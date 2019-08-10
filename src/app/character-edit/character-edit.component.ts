@@ -51,9 +51,9 @@ export class CharacterEditComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.updateCharacter(this._id, form)
       .subscribe(res => {
-        let id = res['_id'];
+        let _id = res['_id'];
         this.isLoadingResults = false;
-        this.router.navigate(['/character-details', id]);
+        this.router.navigate(['/character-details', _id]);
       }, (err) => {
         console.log(err);
         this.isLoadingResults = false;

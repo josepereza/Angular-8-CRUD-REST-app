@@ -11,7 +11,7 @@ import { Character } from '../character';
 
 export class CharacterDetailComponent implements OnInit {
 
-  character: Character = { _id: null, character_name: '', character_description: '', character_level: null, update_at: null };
+  character: Character = { _id: null, character_name: '', character_description: '', character_level: null, updated_at: null };
   isLoadingResults = true;
 
   constructor(

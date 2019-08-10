@@ -19,11 +19,11 @@
                 <dt>Description:</dt>
                 <dd>{{character.character_description}}</dd>
                 <dt>Updated At:</dt>
-                <dd>{{character.update_at | date}}</dd>
+                <dd>{{character.updated_at | date}}</dd>
             </dl>
         </mat-card-content>
         <mat-card-actions>
-            <a mat-flat-button color="primary" [routerLink]="['/character-edit', character._id]">
+            <a mat-flat-button color="primary" [routerLink]="['/character-edit',character._id]">
                 <mat-icon>edit</mat-icon>
             </a>
             <a mat-flat-button color="warn" (click)="deleteCharacter(character._id)">
