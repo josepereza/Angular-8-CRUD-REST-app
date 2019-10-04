@@ -11,6 +11,13 @@ import { ErrorStateMatcher } from '@angular/material';
 })
 export class CharacterEditComponent implements OnInit {
 
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private api: ApiService,
+    private formBuilder: FormBuilder
+  ) { }
+
   characterForm: FormGroup;
   _id: string = '';
   character_name: string = '';
@@ -19,12 +26,11 @@ export class CharacterEditComponent implements OnInit {
   // updated_at: Date = null;
   isLoadingResults = false;
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private api: ApiService,
-    private formBuilder: FormBuilder
-  ) { }
+  validate: ErrorStateMatcher = {
+    isErrorState: (control: FormControl) => {
+      return true;
+    }
+  };
 
   ngOnInit() {
     this.getCharacter(this.route.snapshot.params['id']);
@@ -51,7 +57,7 @@ export class CharacterEditComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.updateCharacter(this._id, form)
       .subscribe(res => {
-        let _id = res['_id'];
+        let _id = res._id;
         this.isLoadingResults = false;
         this.router.navigate(['/character-details', _id]);
       }, (err) => {
@@ -63,11 +69,5 @@ export class CharacterEditComponent implements OnInit {
   characterDetails() {
     this.router.navigate(['character-details', this._id]);
   }
-
-  validate: ErrorStateMatcher = {
-    isErrorState: (control: FormControl) => {
-      return true;
-    }
-  };
 
 }

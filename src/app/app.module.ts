@@ -23,7 +23,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule
-} from "@angular/material";
+} from '@angular/material';
 
 @NgModule({
   declarations: [

@@ -12,7 +12,7 @@ import { Character } from '../character';
 export class CharacterDetailComponent implements OnInit {
 
   character: Character = {
-    _id: "",
+    _id: '',
     character_name: '',
     character_description: '',
     character_level: null,
@@ -27,7 +27,7 @@ export class CharacterDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getCharacterDetails(this.route.snapshot.params['id']);
+    this.getCharacterDetails(this.route.snapshot.params.id);
   }
 
   getCharacterDetails(id) {
