@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError, retry, shareReplay, tap, map } from 'rxjs/operators';
 import { Character } from './character';
 
 const httpOptions = {
@@ -33,6 +33,7 @@ export class ApiService {
   getCharacters(): Observable<Character[]> {
     return this.http.get<Character[]>(apiUrl)
       .pipe(
+        retry(3),
         tap(heroes => console.log('fetched Characters from API')),
         catchError(this.handleError('getCharacters', []))
       );
@@ -43,6 +44,7 @@ export class ApiService {
 
     return this.http.get<Character>(url)
       .pipe(
+        retry(3),
         tap(_ => console.log(`fetched character id=${id}`)),
         catchError(this.handleError<Character>(`getCharacter id=${id}`))
       );

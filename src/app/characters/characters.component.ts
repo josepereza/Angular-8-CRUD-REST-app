@@ -10,7 +10,7 @@ import { Character } from '../character';
 })
 export class CharactersComponent implements OnInit {
 
-  displayedColumns: string[] = ['character_name', 'character_description', "updated_at"];
+  displayedColumns: string[] = ['character_name', 'character_description', 'updated_at'];
   data: Character[] = [];
   isLoadingResults = true;
 
