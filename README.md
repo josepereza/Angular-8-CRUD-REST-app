@@ -1,4 +1,6 @@
 # Angular 8 RESTful CRUD app
+![imagen](crud1.png)
+![imagen](crud2.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2
 
